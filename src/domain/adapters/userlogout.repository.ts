@@ -7,6 +7,7 @@ import { UserLogoutModel } from "../models/user.logout.model";
 import { UserDetailModel } from "../models/user.model";
 import { IUserPort } from "./user.port";
 import { Repository } from "typeorm";
+import { WinstonLoggerService } from "../../infrastructure/logger/winston-logger.service";
 
 
 
@@ -16,7 +17,9 @@ export class UserLogoutRepository {
 
     constructor(
         // @InjectRepository(UserDetail) private UserRepository: Repository<UserDetail>,
-    @InjectRepository(UserLogoutInfo) private UserLogoutRepository: Repository<UserLogoutInfo>) {
+    @InjectRepository(UserLogoutInfo) private userLogoutRepository: Repository<UserLogoutInfo>,
+    private logger: WinstonLoggerService,) {
+        this.logger.setContext(UserLogoutRepository.name);
         console.log('UserLogoutRepository created')
     }
 
@@ -24,8 +27,12 @@ export class UserLogoutRepository {
     * saves the user details in user_track table in database
     */
     async createUserLogoutInfo(userLogoutModel: UserLogoutModel):Promise<UserLogoutModel>{
+        this.logger.info('in createUserLogoutInfo info #UserModel  ${userModel}');
+        this.logger.error('in createUserLogoutInfo error', { key: 'value' });
+        this.logger.debug('in createUserLogoutInfo debug', { key: 'value' });
+        this.logger.warn('in createUserLogoutInfo warn');
         console.log(userLogoutModel)
-        const res= await this.UserLogoutRepository.save(userLogoutModel)
+        const res= await this.userLogoutRepository.save(userLogoutModel)
         console.log('RES""""', res)
         return res;
     }

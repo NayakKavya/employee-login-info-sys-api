@@ -28,7 +28,7 @@ describe('User Logout Repository', ()=> {
         const module= await Test.createTestingModule({
             imports: [
                 //  UserDatabaseModule,
-            //     WinstonLoggerModule.forRoot({ level: ConfigService.create().getLogLevel() }),
+                WinstonLoggerModule.forRoot({ level: ConfigService.create().getLogLevel() }),
             //     // TypeOrmModule.forFeature([UserDetail,UserLogoutInfo])],
             ],
             controllers: [UserController],

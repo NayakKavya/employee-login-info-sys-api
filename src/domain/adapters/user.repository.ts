@@ -7,13 +7,16 @@ import { UserLogoutInfo } from "../entities/user.logout.entity";
 import { GetUserInfoModel } from "../models/getuserinfo.model";
 import { LoginStatus, UserDetailModel } from "../models/user.model";
 import { UserMapper } from "../../infrastructure/mapper/user.mapper";
+import { WinstonLoggerService } from "../../infrastructure/logger/winston-logger.service";
 
 /* UserRepository class implements interface IUserPost and this repository interacts with the database */
 @Injectable()
 export class UserRepository implements IUserPort {
-    constructor(@InjectRepository(UserDetail) private UserRepository: Repository<UserDetail>,
+    constructor(@InjectRepository(UserDetail) private userRepository: Repository<UserDetail>,
+    private logger: WinstonLoggerService,
     // @InjectRepository(UserLogoutInfo) private UserLogoutRepository: Repository<UserLogoutInfo>,
 ) {
+    this.logger.setContext(UserRepository.name);
         console.log('UserRepository created')
     }
 
@@ -21,7 +24,11 @@ export class UserRepository implements IUserPort {
      * An object of UserDetailModel is created and returned as response
      */
     async createUserInfo(userModel: UserDetailModel): Promise<UserDetailModel> {
-        const users = await this.UserRepository.save(userModel);
+        this.logger.info('in createUserInfo info #UserModel  ${userModel}');
+        this.logger.error('in createUserInfo error', { key: 'value' });
+        this.logger.debug('in createUserInfo debug', { key: 'value' });
+        this.logger.warn('in createUserInfo warn');
+        const users = await this.userRepository.save(userModel);
         console.log("user inserted",users)
             const um = new UserDetailModel(users.userId, users.browser, users.machineId, users.shopId, users.userLogin, users.loginDate)
            return um;
@@ -32,7 +39,11 @@ export class UserRepository implements IUserPort {
      * if user is found returns userModel as response
      */
     async getUserInfo(getUserInfoModel: UserDetailModel):  Promise<UserDetailModel[]>  {
-        const users = await this.UserRepository.find({
+        this.logger.info('in getUserByUserId info #UserId #ShopId ${getUserModel}');
+        this.logger.error('in getUserByUserId error', { key: 'value' });
+        this.logger.debug('in getUserByUserId debug', { key: 'value' });
+        this.logger.warn('in getUserByUserId warn');
+        const users = await this.userRepository.find({
             where: { userId: getUserInfoModel.userId, shopId: getUserInfoModel.shopId }
         })
         return UserMapper.toDomains(users);
@@ -43,8 +54,12 @@ export class UserRepository implements IUserPort {
      * and deletes user with same userId and shopId fron user_details table in database
      */
     async delUserInfo(userId,shopId):  Promise<any>  {
+        this.logger.info('in deleteUserInfoModel info #UserId #ShopNo ${getUserModel}');
+        this.logger.error('in deleteUserInfoModel error', { key: 'value' });
+        this.logger.debug('in deleteUserInfoModel debug', { key: 'value' });
+        this.logger.warn('in deleteUserInfoModel warn');
          console.log("userId", userId,"shopid",shopId,)
-        const users = this.UserRepository.delete({userId: userId, shopId: shopId})
+        const users = this.userRepository.delete({userId: userId, shopId: shopId})
         users.then(value => {console.log(value)})
         return users;
     }

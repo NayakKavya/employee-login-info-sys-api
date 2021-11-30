@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserMapper = void 0;
-const userdetail_entity_1 = require("../../domain/entities/userdetail.entity");
 const user_model_1 = require("../../domain/models/user.model");
 const typescript_optional_1 = require("typescript-optional");
 class UserMapper {

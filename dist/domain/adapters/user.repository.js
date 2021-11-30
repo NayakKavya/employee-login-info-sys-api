@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var UserRepository_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserRepository = void 0;
 const common_1 = require("@nestjs/common");
@@ -21,34 +22,49 @@ const userdetail_entity_1 = require("../entities/userdetail.entity");
 const user_model_1 = require("../models/user.model");
 const user_mapper_1 = require("../../infrastructure/mapper/user.mapper");
 const winston_logger_service_1 = require("../../infrastructure/logger/winston-logger.service");
-let UserRepository = class UserRepository {
-    constructor(UserRepository) {
-        this.UserRepository = UserRepository;
+let UserRepository = UserRepository_1 = class UserRepository {
+    constructor(userRepository, logger) {
+        this.userRepository = userRepository;
+        this.logger = logger;
+        this.logger.setContext(UserRepository_1.name);
         console.log('UserRepository created');
     }
     async createUserInfo(userModel) {
-        const users = await this.UserRepository.save(userModel);
+        this.logger.info('in createUserInfo info #UserModel  ${userModel}');
+        this.logger.error('in createUserInfo error', { key: 'value' });
+        this.logger.debug('in createUserInfo debug', { key: 'value' });
+        this.logger.warn('in createUserInfo warn');
+        const users = await this.userRepository.save(userModel);
         console.log("user inserted", users);
         const um = new user_model_1.UserDetailModel(users.userId, users.browser, users.machineId, users.shopId, users.userLogin, users.loginDate);
         return um;
     }
     async getUserInfo(getUserInfoModel) {
-        const users = await this.UserRepository.find({
+        this.logger.info('in getUserByUserId info #UserId #ShopId ${getUserModel}');
+        this.logger.error('in getUserByUserId error', { key: 'value' });
+        this.logger.debug('in getUserByUserId debug', { key: 'value' });
+        this.logger.warn('in getUserByUserId warn');
+        const users = await this.userRepository.find({
             where: { userId: getUserInfoModel.userId, shopId: getUserInfoModel.shopId }
         });
         return user_mapper_1.UserMapper.toDomains(users);
     }
     async delUserInfo(userId, shopId) {
+        this.logger.info('in deleteUserInfoModel info #UserId #ShopNo ${getUserModel}');
+        this.logger.error('in deleteUserInfoModel error', { key: 'value' });
+        this.logger.debug('in deleteUserInfoModel debug', { key: 'value' });
+        this.logger.warn('in deleteUserInfoModel warn');
         console.log("userId", userId, "shopid", shopId);
-        const users = this.UserRepository.delete({ userId: userId, shopId: shopId });
+        const users = this.userRepository.delete({ userId: userId, shopId: shopId });
         users.then(value => { console.log(value); });
         return users;
     }
 };
-UserRepository = __decorate([
+UserRepository = UserRepository_1 = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(userdetail_entity_1.UserDetail)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        winston_logger_service_1.WinstonLoggerService])
 ], UserRepository);
 exports.UserRepository = UserRepository;
 //# sourceMappingURL=user.repository.js.map

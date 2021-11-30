@@ -9,8 +9,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserDatabaseModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const config_service_1 = require("../configuration/config.service");
-const user_setting_1 = require("../constants/user-setting");
+const config_service_1 = require("../../infrastructure/configuration/config.service");
+const user_setting_1 = require("../../infrastructure/constants/user-setting");
 let UserDatabaseModule = class UserDatabaseModule {
 };
 UserDatabaseModule = __decorate([

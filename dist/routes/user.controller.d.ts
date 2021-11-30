@@ -1,8 +1,8 @@
-import { UserRepository } from "src/domain/adapters/user.repository";
-import { UserLogoutRepository } from "src/domain/adapters/userlogout.repository";
-import { UserLogoutModel } from "src/domain/models/user.logout.model";
-import { UserDetailModel } from "src/domain/models/user.model";
-import { WinstonLoggerService } from "src/infrastructure/logger/winston-logger.service";
+import { UserRepository } from "../domain/adapters/user.repository";
+import { UserLogoutRepository } from "../domain/adapters/userlogout.repository";
+import { UserLogoutModel } from "../domain/models/user.logout.model";
+import { UserDetailModel } from "../domain/models/user.model";
+import { WinstonLoggerService } from "../infrastructure/logger/winston-logger.service";
 export declare class UserController {
     private userRepository;
     private userLogoutRepository;
