@@ -30,7 +30,7 @@ export class ConfigService {
         return value
     }
     public getTypeOrmConfig(): TypeOrmModuleOptions {
-        const dbType = this.getValue(UserSettingConstants.PRODUCTS_DATABASE_TYPE)
+        const dbType = this.getValue(UserSettingConstants.EMPLOYEE_INFO_DATABASE_TYPE)
         let type1: DatabaseType = 'sqlite';
         switch (dbType) {
             case 'postgres':
@@ -46,18 +46,18 @@ export class ConfigService {
 
         const options: TypeOrmModuleOptions = {
             type: type1,
-            host: this.getValue(UserSettingConstants.PRODUCTS_POSTGRES_HOST),
-            port: parseInt(this.getValue(UserSettingConstants.PRODUCTS_POSTGRES_PORT)),
-            username: this.getValue(UserSettingConstants.PRODUCTS_POSTGRES_USERNAME),
-            password: this.getValue(UserSettingConstants.PRODUCTS_POSTGRES_PASSWORD),
-            database: this.getValue(UserSettingConstants.PRODUCTS_POSTGRES_DATABASE),
-            entities: [this.getValue(UserSettingConstants.PRODUCTS_ENTITIES_PATH)],
-            migrationsTableName: this.getValue(UserSettingConstants.PRODUCTS_MIGRATION_TABLE_NAME),
-            migrations: [this.getValue(UserSettingConstants.PRODUCTS_MIGRATIONS_FILE_PATH)],
+            host: this.getValue(UserSettingConstants.EMPLOYEE_INFO_POSTGRES_HOST),
+            port: parseInt(this.getValue(UserSettingConstants.EMPLOYEE_INFO_POSTGRES_PORT)),
+            username: this.getValue(UserSettingConstants.EMPLOYEE_INFO_POSTGRES_USERNAME),
+            password: this.getValue(UserSettingConstants.EMPLOYEE_INFO_POSTGRES_PASSWORD),
+            database: this.getValue(UserSettingConstants.EMPLOYEE_INFO_POSTGRES_DATABASE),
+            entities: [this.getValue(UserSettingConstants.EMPLOYEE_INFO_ENTITIES_PATH)],
+            migrationsTableName: this.getValue(UserSettingConstants.EMPLOYEE_INFO_MIGRATION_TABLE_NAME),
+            migrations: [this.getValue(UserSettingConstants.EMPLOYEE_INFO_MIGRATIONS_FILE_PATH)],
             schema :"user",
             // synchronize: true,
             cli: {
-                migrationsDir: this.getValue(UserSettingConstants.PRODUCTS_MIGRATIONS_DIRECTORY)
+                migrationsDir: this.getValue(UserSettingConstants.EMPLOYEE_INFO_MIGRATIONS_DIRECTORY)
             }
         }
         console.log(options)
@@ -80,7 +80,7 @@ export class ConfigService {
     }
 
     public getLogLevel(): string {
-        const level = this.getValue('PRODUCT_LOG_LEVEL', false)
+        const level = this.getValue('EMPLOYEE_INFO_LOG_LEVEL', false)
         return level
     }
 

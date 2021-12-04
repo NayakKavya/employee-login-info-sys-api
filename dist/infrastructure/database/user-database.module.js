@@ -19,15 +19,15 @@ UserDatabaseModule = __decorate([
             typeorm_1.TypeOrmModule.forRoot(config_service_1.ConfigService
                 .create()
                 .ensureValues([
-                user_setting_1.UserSettingConstants.PRODUCTS_POSTGRES_HOST,
-                user_setting_1.UserSettingConstants.PRODUCTS_POSTGRES_PORT,
-                user_setting_1.UserSettingConstants.PRODUCTS_POSTGRES_USERNAME,
-                user_setting_1.UserSettingConstants.PRODUCTS_POSTGRES_PASSWORD,
-                user_setting_1.UserSettingConstants.PRODUCTS_POSTGRES_DATABASE,
-                user_setting_1.UserSettingConstants.PRODUCTS_ENTITIES_PATH,
-                user_setting_1.UserSettingConstants.PRODUCTS_MIGRATION_TABLE_NAME,
-                user_setting_1.UserSettingConstants.PRODUCTS_MIGRATIONS_FILE_PATH,
-                user_setting_1.UserSettingConstants.PRODUCTS_MIGRATIONS_DIRECTORY
+                user_setting_1.UserSettingConstants.EMPLOYEE_INFO_POSTGRES_HOST,
+                user_setting_1.UserSettingConstants.EMPLOYEE_INFO_POSTGRES_PORT,
+                user_setting_1.UserSettingConstants.EMPLOYEE_INFO_POSTGRES_USERNAME,
+                user_setting_1.UserSettingConstants.EMPLOYEE_INFO_POSTGRES_PASSWORD,
+                user_setting_1.UserSettingConstants.EMPLOYEE_INFO_POSTGRES_DATABASE,
+                user_setting_1.UserSettingConstants.EMPLOYEE_INFO_ENTITIES_PATH,
+                user_setting_1.UserSettingConstants.EMPLOYEE_INFO_MIGRATION_TABLE_NAME,
+                user_setting_1.UserSettingConstants.EMPLOYEE_INFO_MIGRATIONS_FILE_PATH,
+                user_setting_1.UserSettingConstants.EMPLOYEE_INFO_MIGRATIONS_DIRECTORY
             ])
                 .getTypeOrmConfig())
         ]

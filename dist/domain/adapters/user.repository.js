@@ -30,33 +30,26 @@ let UserRepository = UserRepository_1 = class UserRepository {
         console.log('UserRepository created');
     }
     async createUserInfo(userModel) {
-        this.logger.info('in createUserInfo info #UserModel  ${userModel}');
-        this.logger.error('in createUserInfo error', { key: 'value' });
-        this.logger.debug('in createUserInfo debug', { key: 'value' });
-        this.logger.warn('in createUserInfo warn');
+        this.logger.info(`in createUserInfo info #UserModel  ${userModel}`);
+        this.logger.info('in createUserInfo repository info', { createUserInfo: userModel });
         const users = await this.userRepository.save(userModel);
-        console.log("user inserted", users);
+        this.logger.info('in createUserInfo repository users info', { createUserInfo: users });
         const um = new user_model_1.UserDetailModel(users.userId, users.browser, users.machineId, users.shopId, users.userLogin, users.loginDate);
         return um;
     }
     async getUserInfo(getUserInfoModel) {
-        this.logger.info('in getUserByUserId info #UserId #ShopId ${getUserModel}');
-        this.logger.error('in getUserByUserId error', { key: 'value' });
-        this.logger.debug('in getUserByUserId debug', { key: 'value' });
-        this.logger.warn('in getUserByUserId warn');
+        this.logger.info(`in getUserInfo info #UserId #ShopId ${getUserInfoModel}`);
+        this.logger.info('in getUserInfo repository info', { getUserInfo: getUserInfoModel });
         const users = await this.userRepository.find({
             where: { userId: getUserInfoModel.userId, shopId: getUserInfoModel.shopId }
         });
         return user_mapper_1.UserMapper.toDomains(users);
     }
     async delUserInfo(userId, shopId) {
-        this.logger.info('in deleteUserInfoModel info #UserId #ShopNo ${getUserModel}');
-        this.logger.error('in deleteUserInfoModel error', { key: 'value' });
-        this.logger.debug('in deleteUserInfoModel debug', { key: 'value' });
-        this.logger.warn('in deleteUserInfoModel warn');
-        console.log("userId", userId, "shopid", shopId);
+        this.logger.info(`in deleteUserInfoModel info #UserId ${userId} #ShopNo ${shopId}`);
+        this.logger.info('in delUserInfo repository info', { delUserInfo: userId, shopId });
         const users = this.userRepository.delete({ userId: userId, shopId: shopId });
-        users.then(value => { console.log(value); });
+        users.then(value => { this.logger.info('in deleteUserInfo repository info deleteValue', { delUserInfo: value }); });
         return users;
     }
 };

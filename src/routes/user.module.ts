@@ -13,10 +13,10 @@ import { UserLogoutRepository } from 'src/domain/adapters/userlogout.repository'
     imports: [
         UserDatabaseModule,
         WinstonLoggerModule.forRoot({ level: ConfigService.create().getLogLevel() }),
-        TypeOrmModule.forFeature([UserDetail,UserLogoutInfo])
+        TypeOrmModule.forFeature([UserDetail, UserLogoutInfo])
     ],
     controllers: [UserController],
-    providers: [UserRepository,UserLogoutRepository],
+    providers: [UserRepository, UserLogoutRepository],
 })
 export class UserModule {
     constructor() {

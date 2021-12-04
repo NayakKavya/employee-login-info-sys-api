@@ -29,39 +29,25 @@ let UserController = UserController_1 = class UserController {
         console.log('users service controller created');
     }
     createUserInfo(userModel) {
-        this.logger.info('in createUserInfo info #UserModel  ${userModel}');
-        this.logger.error('in createUserInfo error', { key: 'value' });
-        this.logger.debug('in createUserInfo debug', { key: 'value' });
-        this.logger.warn('in createUserInfo warn');
-        console.log('user service controller createUserInfo method');
+        this.logger.info(`in createUserInfo info #UserModel  ${userModel}`);
+        this.logger.info('in createUserInfo controller info', { delUserInfoModel: userModel });
         const res = this.userRepository.createUserInfo(userModel);
-        console.log('res', res);
         return res;
     }
     detUserInfoModel(userId, shopNo) {
-        this.logger.info('in deleteUserInfoModel info #UserId #ShopNo ${getUserModel}');
-        this.logger.error('in deleteUserInfoModel error', { key: 'value' });
-        this.logger.debug('in deleteUserInfoModel debug', { key: 'value' });
-        this.logger.warn('in deleteUserInfoModel warn');
-        console.log('user service controller detUserInfoModel method');
+        this.logger.info(`in deleteUserInfoModel info #UserId ${userId} #ShopNo ${shopNo}`);
+        this.logger.info('in delUserInfoModel controller info', { delUserInfoModel: userId, shopNo });
         return this.userRepository.delUserInfo(userId, shopNo);
     }
-    GetUserInfoModel(userModel) {
-        this.logger.info('in getUserByUserId info #UserId #ShopId ${getUserModel}');
-        this.logger.error('in getUserByUserId error', { key: 'value' });
-        this.logger.debug('in getUserByUserId debug', { key: 'value' });
-        this.logger.warn('in getUserByUserId warn');
-        console.log('user service controller updateUserInfo method');
+    getUserInfo(userModel) {
+        this.logger.info(`in getUserInfo info #UserModel ${userModel}`);
+        this.logger.info('in getUserInfo controller info', { getUserInfo: userModel });
         return this.userRepository.getUserInfo(userModel);
     }
     createUserLogoutInfo(userLogoutModel) {
-        this.logger.info('in createUserLogoutInfo info #UserModel  ${userModel}');
-        this.logger.error('in createUserLogoutInfo error', { key: 'value' });
-        this.logger.debug('in createUserLogoutInfo debug', { key: 'value' });
-        this.logger.warn('in createUserLogoutInfo warn');
-        console.log('#####', userLogoutModel);
+        this.logger.info(`in createUserLogoutInfo info #UserLogoutModel  ${userLogoutModel}`);
+        this.logger.info('in createUserLogoutInfo controller info', { createUserLogoutInfo: userLogoutModel });
         const ret = this.userLogoutRepository.createUserLogoutInfo(userLogoutModel);
-        console.log('RET;;;;;;;', ret);
         return ret;
     }
 };
@@ -86,7 +72,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [user_model_1.UserDetailModel]),
     __metadata("design:returntype", void 0)
-], UserController.prototype, "GetUserInfoModel", null);
+], UserController.prototype, "getUserInfo", null);
 __decorate([
     (0, common_1.Post)('/logout'),
     __param(0, (0, common_1.Body)()),

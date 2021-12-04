@@ -10,15 +10,15 @@ import { UserSettingConstants } from '../../infrastructure/constants/user-settin
                 .create()
                 .ensureValues(
                     [
-                        UserSettingConstants.PRODUCTS_POSTGRES_HOST,
-                        UserSettingConstants.PRODUCTS_POSTGRES_PORT,
-                        UserSettingConstants.PRODUCTS_POSTGRES_USERNAME,
-                        UserSettingConstants.PRODUCTS_POSTGRES_PASSWORD,
-                        UserSettingConstants.PRODUCTS_POSTGRES_DATABASE,
-                        UserSettingConstants.PRODUCTS_ENTITIES_PATH,
-                        UserSettingConstants.PRODUCTS_MIGRATION_TABLE_NAME,
-                        UserSettingConstants.PRODUCTS_MIGRATIONS_FILE_PATH,
-                        UserSettingConstants.PRODUCTS_MIGRATIONS_DIRECTORY
+                        UserSettingConstants.EMPLOYEE_INFO_POSTGRES_HOST,
+                        UserSettingConstants.EMPLOYEE_INFO_POSTGRES_PORT,
+                        UserSettingConstants.EMPLOYEE_INFO_POSTGRES_USERNAME,
+                        UserSettingConstants.EMPLOYEE_INFO_POSTGRES_PASSWORD,
+                        UserSettingConstants.EMPLOYEE_INFO_POSTGRES_DATABASE,
+                        UserSettingConstants.EMPLOYEE_INFO_ENTITIES_PATH,
+                        UserSettingConstants.EMPLOYEE_INFO_MIGRATION_TABLE_NAME,
+                        UserSettingConstants.EMPLOYEE_INFO_MIGRATIONS_FILE_PATH,
+                        UserSettingConstants.EMPLOYEE_INFO_MIGRATIONS_DIRECTORY
                     ]
                 )
                 .getTypeOrmConfig(),

@@ -27,13 +27,11 @@ let UserLogoutRepository = UserLogoutRepository_1 = class UserLogoutRepository {
         console.log('UserLogoutRepository created');
     }
     async createUserLogoutInfo(userLogoutModel) {
-        this.logger.info('in createUserLogoutInfo info #UserModel  ${userModel}');
-        this.logger.error('in createUserLogoutInfo error', { key: 'value' });
-        this.logger.debug('in createUserLogoutInfo debug', { key: 'value' });
-        this.logger.warn('in createUserLogoutInfo warn');
+        this.logger.info(`in createUserLogoutInfo info #UserModel  ${userLogoutModel}`);
+        this.logger.info('in delUserInfo logout repository info', { createUserLogoutInfo: userLogoutModel });
         console.log(userLogoutModel);
         const res = await this.userLogoutRepository.save(userLogoutModel);
-        console.log('RES""""', res);
+        this.logger.info('in delUserInfo repository res info', { delUserInfo: res });
         return res;
     }
     createUserInfo(userModel) {

@@ -10,6 +10,6 @@ export declare class UserController {
     constructor(userRepository: UserRepository, userLogoutRepository: UserLogoutRepository, logger: WinstonLoggerService);
     createUserInfo(userModel: UserDetailModel): Promise<UserDetailModel>;
     detUserInfoModel(userId: string, shopNo: number): Promise<any>;
-    GetUserInfoModel(userModel: UserDetailModel): Promise<UserDetailModel[]>;
+    getUserInfo(userModel: UserDetailModel): Promise<UserDetailModel[]>;
     createUserLogoutInfo(userLogoutModel: UserLogoutModel): Promise<UserLogoutModel>;
 }
